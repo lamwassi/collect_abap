@@ -1,14 +1,4 @@
 #!/bin/bash
-# # Set the source directory where to search for .txt files
-# src_dir="/app/abap2"
-
-# # Set the destination directory where to copy the .txt files
-# dest_dir="/app/abap_codes"
-
-# # Find all .txt files in the source directory and copy them to the destination directory
-# find  -r "$src_dir" -name "*.abap" -exec cp {} "$dest_dir" \;
-
-
 # Define the path to the JSON file
 json_file="/app/repos.json"
 
