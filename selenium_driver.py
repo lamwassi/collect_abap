@@ -12,7 +12,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from driver import  get_driver
 
 
-
 class SeleniumDriver():
 
     def __init__(self, remote_ip_addr) -> None:
@@ -49,18 +48,17 @@ class SeleniumDriver():
         """
         return self.driver.find_elements(By.XPATH ,".//*" )
 
-
-
-    def search_body(self, empty_body_element_class_name = "pf-c-empty-state__body"):
-
-        element_body = ''
-      
-        try:
-            element_body = WebDriverWait(self.driver,8).until(EC.presence_of_element_located((By.CLASS_NAME, empty_body_element_class_name ))).text
+    def find_element_by_xpath(self, path:str):
+        """
         
-        finally:
-            return element_body
-
+        """
+        element = None
+        try:    
+            element = self.driver.find_element(By.XPATH, path )
+        except Exception as e:
+            print("No xpath found : Raised :{}".format(e))
+            
+        return element
 
     def find_element_by_css_selector(self, selector:str):
 
@@ -79,14 +77,10 @@ class SeleniumDriver():
         Returns:
             elements containing search results
         """
-
         elements = None
-
-  
         try:
-            elements = WebDriverWait(self.driver, 3).until(
-        EC.presence_of_element_located((By.CLASS_NAME, class_name))
-    )   
+            print(class_name) 
+            elements = self.driver.find_element(By.CLASS_NAME, class_name)
         except Exception as e:
             print("error.  {}".format(e))
         
